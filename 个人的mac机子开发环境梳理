@@ -1,0 +1,1016 @@
+
+mac下 安装的开发相关工具
+
+mysql workbench  ；sublime ；eclipeforjavaee eclipseforphp ；
+-------------------------------------------
+主要是sublime的配置 nodejs 
+
+
+------------------------------------------
+在mac机子的文稿下 eclipsejava 需要下面的东西的详细配置情况
+
+--------------------------------------------
+由于升级mac操作系统 MacOS 到 MacSierra 系统默认的java环境有改变
+
+thief-MBP:~ thief$ cd /System/Library/Java/JavaVirtualMachines
+-bash: cd: /System/Library/Java/JavaVirtualMachines: No such file or directory
+thief-MBP:~ thief$ cd /System/Library/Java/
+thief-MBP:Java thief$ ls -la
+total 0
+drwxr-xr-x   4 root  wheel   136  9 14 08:41 .
+drwxr-xr-x  91 root  wheel  3094  9 22 18:50 ..
+drwxr-xr-x   3 root  wheel   102  8  4 11:21 Extensions
+drwxr-xr-x   3 root  wheel   102  7 31 11:16 Support
+thief-MBP:Java thief$ cd Support/
+thief-MBP:Support thief$ ls -la
+total 0
+drwxr-xr-x  3 root  wheel  102  7 31 11:16 .
+drwxr-xr-x  4 root  wheel  136  9 14 08:41 ..
+drwxr-xr-x  3 root  wheel  102  7 31 11:16 CoreDeploy.bundle
+thief-MBP:Support thief$ cd ../
+thief-MBP:Java thief$ cd Extensions/
+thief-MBP:Extensions thief$ ls -la
+total 24
+drwxr-xr-x  3 root  wheel    102  8  4 11:21 .
+drwxr-xr-x  4 root  wheel    136  9 14 08:41 ..
+-rw-r--r--  1 root  wheel  12849  8  4 11:21 MRJToolkit.jar
+
+----------------------------------------------------------------
+自己添加自己的java环境变量到系统变量bashrc中
+
+
+thief-MBP:~ thief$ cd /Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/
+thief-MBP:jdk1.8.0.jdk thief$ ls -la
+total 0
+drwxr-xr-x  3 root  wheel  102  6 12 23:20 .
+drwxr-xr-x  4 root  wheel  136  9 22 18:52 ..
+drwxrwxr-x  5 root  wheel  170  3  4  2014 Contents
+thief-MBP:jdk1.8.0.jdk thief$ 
+
+----------------------------------------------------
+//////安装mac的java环境细节  
+更新mac系统的jdk 1.6.0到 1.8.0  不使用brew 使用oracle官网的安装包
+
+情况：
+使用最新的eclipse需要最新的JDK1.8.0时，需要将路径指向由系统自带的JDK6路径/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/转为我们自己从ORICAL下载的最新JDK8安装路径。
+JDK8以及JDK7安装的默认路径为：/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk
+
+不使用Brew因为 避免装很多不必要的东西
+Last login: Sat Jul  9 09:16:31 on ttys000
+thief-MacBook-Pro:~ thief$ brew search java
+app-engine-java     javarepl            jslint4java         libreadline-java  
+homebrew/emacs/javaimp
+Caskroom/versions/charles-applejava
+Caskroom/versions/charles-beta-applejava
+Caskroom/versions/java-beta
+Caskroom/versions/java6
+Caskroom/versions/java7
+Caskroom/versions/java9-beta
+thief-MacBook-Pro:~ thief$ brew search jre
+No formula found for "jre".
+==> Searching pull requests...
+thief-MacBook-Pro:~ thief$ brew search jenv
+jenv
+thief-MacBook-Pro:~ thief$ brew search java8
+No formula found for "java8".
+==> Searching pull requests...
+thief-MacBook-Pro:~ thief$ 
+
+Oracle官网安装的JDK目录
+/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home
+MAC系统自带的JDK目录/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+
+
+---------------------------------------------------------------
+安装tomcat 
+
+thief-MacBook-Pro:bin thief$ catalina.sh
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Usage: catalina.sh ( commands ... )
+commands:
+  debug             Start Catalina in a debugger
+  debug -security   Debug Catalina with a security manager
+  jpda start        Start Catalina under JPDA debugger
+  run               Start Catalina in the current window
+  run -security     Start in the current window with security manager
+  start             Start Catalina in a separate window
+  start -security   Start in a separate window with security manager
+  stop              Stop Catalina, waiting up to 5 seconds for the process to end
+  stop n            Stop Catalina, waiting up to n seconds for the process to end
+  stop -force       Stop Catalina, wait up to 5 seconds and then use kill -KILL if still running
+  stop n -force     Stop Catalina, wait up to n seconds and then use kill -KILL if still running
+  configtest        Run a basic syntax check on server.xml - check exit code for result
+  version           What version of tomcat are you running?
+Note: Waiting for the process to end and use of the -force option require that $CATALINA_PID is defined
+thief-MacBook-Pro:bin thief$ catalina.sh start
+
+
+----------------------------------------------------
+
+tomcat 进程号文件存储位置
+thief-MacBook-Pro:bin thief$ cd /Users/thief/Documents/apache-tomcat-8.5.3/CATALINA_PID 
+thief-MacBook-Pro:CATALINA_PID thief$ vi CATALINA_PID
+thief-MacBook-Pro:CATALINA_PID thief$ ls -la
+total 0
+drwxr-xr-x   2 thief  wheel   68  7  9 12:35 .
+drwxr-xr-x  15 thief  wheel  510  7  9 12:33 ..
+thief-MacBook-Pro:CATALINA_PID thief$ vi CATALINA_PID
+thief-MacBook-Pro:CATALINA_PID thief$ catalina.sh 
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Using CATALINA_PID:    /Users/thief/Documents/apache-tomcat-8.5.3/CATALINA_PID
+Usage: catalina.sh ( commands ... )
+commands:
+  debug             Start Catalina in a debugger
+  debug -security   Debug Catalina with a security manager
+  jpda start        Start Catalina under JPDA debugger
+  run               Start Catalina in the current window
+  run -security     Start in the current window with security manager
+  start             Start Catalina in a separate window
+  start -security   Start in a separate window with security manager
+  stop              Stop Catalina, waiting up to 5 seconds for the process to end
+  stop n            Stop Catalina, waiting up to n seconds for the process to end
+  stop -force       Stop Catalina, wait up to 5 seconds and then use kill -KILL if still running
+  stop n -force     Stop Catalina, wait up to n seconds and then use kill -KILL if still running
+  configtest        Run a basic syntax check on server.xml - check exit code for result
+  version           What version of tomcat are you running?
+Note: Waiting for the process to end and use of the -force option require that $CATALINA_PID is defined
+thief-MacBook-Pro:CATALINA_PID thief$ catalina.sh stop
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Using CATALINA_PID:    /Users/thief/Documents/apache-tomcat-8.5.3/CATALINA_PID
+$CATALINA_PID was set but the specified file does not exist. Is Tomcat running? Stop aborted.
+thief-MacBook-Pro:CATALINA_PID thief$ catalina.sh stop
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Using CATALINA_PID:    /Users/thief/Documents/apache-tomcat-8.5.3/CATALINA_PID
+PID file found but no matching process was found. Stop aborted.
+thief-MacBook-Pro:CATALINA_PID thief$ catalina.sh start
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Using CATALINA_PID:    /Users/thief/Documents/apache-tomcat-8.5.3/CATALINA_PID
+Existing PID file found during start.
+Removing/clearing stale PID file.
+Tomcat started.
+thief-MacBook-Pro:CATALINA_PID thief$ 
+
+
+---------------------------------------------
+
+安装配置spring 配置maven 
+
+ Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。当你使用Maven的时候，你用一个明确定义的项目对象模型来描述你的项目，然后Maven可以应用横切的逻辑，这些逻辑来自一组共享的（或者自定义的）插件。
+
+基本的常用命令如下：
+mvn archetype：create 创建Maven项目
+mvn compile 编译源代码
+mvn deploy 发布项目
+mvn test-compile 编译测试源代码
+mvn test 运行应用程序中的单元测试
+mvn site 生成项目相关信息的网站
+mvn clean 清除项目目录中的生成结果
+mvn package 根据项目生成的jar
+mvn install 在本地Repository中安装jar
+mvn eclipse:eclipse 生成eclipse项目文件
+mvnjetty:run 启动jetty服务
+mvntomcat:run 启动tomcat服务
+mvn clean package -Dmaven.test.skip=true:清除以前的包后重新打包，跳过测试类
+
+对于初学者在安装配置好maven之后，发现目录下不存在.m2文件夹，其原因是因为没有执行任何maven相关的命令，之后执行之后maven才会自动去创建.m2文件夹。
+
+在cmd命令下执行mvn help:system命令，此命令含义可以参考地址如下：http://www.yoodb.com/article/display/167，执行完成之后就会发现目录下自动创建了.m2文件夹
+
+thief-MBP:bin thief$ cd /Users/thief/Documents/apache-maven-3.3.9 
+thief-MBP:apache-maven-3.3.9 thief$ ls -la
+total 80
+drwxr-xr-x  11 thief  wheel    374  7 13 12:37 .
+drwx------+ 23 thief  wheel    782 10 20 20:08 ..
+-rw-r--r--@  1 thief  wheel  10244 10 21 21:42 .DS_Store
+-rw-r--r--@  1 thief  wheel  19335 11 11  2015 LICENSE
+-rw-r--r--@  1 thief  wheel    182 11 11  2015 NOTICE
+-rw-r--r--@  1 thief  wheel   2541 11 11  2015 README.txt
+drwxr-xr-x   9 thief  wheel    306  7  9 15:49 bin
+drwxr-xr-x   4 thief  wheel    136  7  9 16:08 boot
+drwxr-xr-x@  6 thief  wheel    204  7  9 18:34 conf
+drwxr-xr-x@ 78 thief  wheel   2652  7  9 16:08 lib
+drwxr-xr-x  26 thief  wheel    884  7 17 22:12 reposity
+thief-MBP:apache-maven-3.3.9 thief$ 
+
+
+----------------------------------------------
+
+thief-MBP:apache-maven-3.3.9 thief$ cd /Users/thief/Documents/apache-ant-1.9.7 
+thief-MBP:apache-ant-1.9.7 thief$ ls -la
+total 848
+drwxr-xr-x@ 18 thief  wheel     612  7  9 10:07 .
+drwx------+ 23 thief  wheel     782 10 20 20:08 ..
+-rw-r--r--@  1 thief  wheel    6148  7  9 10:07 .DS_Store
+-rw-r--r--@  1 thief  wheel    6081  4  9  2016 CONTRIBUTORS
+-rw-r--r--@  1 thief  wheel     126  4  9  2016 INSTALL
+-rw-r--r--@  1 thief  wheel   92261  4  9  2016 KEYS
+-rw-r--r--@  1 thief  wheel   15289  4  9  2016 LICENSE
+-rw-r--r--@  1 thief  wheel     305  4  9  2016 NOTICE
+-rw-r--r--@  1 thief  wheel    4119  4  9  2016 README
+-rw-r--r--@  1 thief  wheel  233424  4  9  2016 WHATSNEW
+drwxr-xr-x@ 15 thief  wheel     510  6 12 16:20 bin
+-rw-r--r--@  1 thief  wheel   30018  4  9  2016 contributors.xml
+drwxr-xr-x@ 15 thief  wheel     510  6 12 16:20 etc
+-rw-r--r--@  1 thief  wheel   11253  4  9  2016 fetch.xml
+-rw-r--r--@  1 thief  wheel    4445  4  9  2016 get-m2.xml
+drwxr-xr-x@ 49 thief  wheel    1666  6 12 16:20 lib
+drwxr-xr-x@ 50 thief  wheel    1700  6 12 16:20 manual
+-rw-r--r--@  1 thief  wheel    1915  4  9  2016 patch.xml
+thief-MBP:apache-ant-1.9.7 thief$ 
+
+
+---------------------------------------------
+自己的mac机子的 mysql git nginx php70 安装目录
+
+
+thief-MBP:Contents thief$ brew list
+freetype	icu4c		mysql		pcre		readline
+gettext		jpeg		nginx		php70		unixodbc
+git		libpng		openssl		php70-xdebug	wget
+thief-MBP:Contents thief$ cd /usr/local
+thief-MBP:local thief$ ls -la
+total 72
+drwxr-xr-x  28 root   wheel   952  9 22 18:57 .
+drwxr-xr-x@ 10 root   wheel   340  9 22 18:53 ..
+drwxr-xr-x  14 thief  admin   476  9 21 19:42 .git
+drwxr-xr-x   4 thief  admin   136  9 21 19:42 .github
+-rw-r--r--   1 thief  admin  1023  9 21 19:42 .gitignore
+-rw-r--r--   1 thief  admin   154  9 21 19:42 .travis.yml
+-rw-r--r--   1 thief  admin   291  6 21 22:17 .yardopts
+-rw-r--r--   1 thief  admin  3161  6 21 22:17 CODEOFCONDUCT.md
+-rw-r--r--   1 thief  admin   697  9 21 19:42 CONTRIBUTING.md
+drwxr-xr-x  17 thief  admin   578  7  9 11:35 Cellar
+-rw-r--r--   1 thief  admin  1241  6 21 22:17 LICENSE.txt
+drwxr-xr-x   9 thief  admin   306  9 21 19:42 Library
+-rw-r--r--   1 thief  admin  5765  9 21 19:42 README.md
+drwxr-xr-x  95 thief  admin  3230  9 21 19:42 bin
+drwxr-xr-x   4 thief  admin   136  9 21 19:42 completions
+drwxr-xr-x  39 thief  admin  1326  9 21 19:42 docs
+drwxr-xr-x   9 thief  admin   306  7  9 09:34 etc
+drwxr-xr-x   2 thief  admin    68  6 14 22:39 gcc6.1.0
+drwxr-xr-x  30 thief  admin  1020  7  7 23:35 include
+drwxr-xr-x  60 thief  admin  2040  7  7 23:35 lib
+drwxr-xr-x   4 thief  admin   136  9 21 19:42 manpages
+lrwxr-xr-x   1 root   wheel    27  8 21  2015 mysql -> mysql-5.6.26-osx10.8-x86_64
+drwxr-xr-x  17 root   wheel   578  8 21  2015 mysql-5.6.26-osx10.8-x86_64
+drwxr-xr-x  17 thief  admin   578  7  9 11:35 opt
+drwxr-xr-x   6 root   admin   204  6 21 21:38 pcre8.38
+drwxr-xr-x   4 thief  admin   136  7  7 23:35 sbin
+drwxr-xr-x  12 thief  admin   408  7  9 09:34 share
+drwxr-xr-x   7 thief  admin   238  9 21 19:42 var
+thief-MBP:local thief$ cd Cellar/
+thief-MBP:Cellar thief$ ls -la
+total 0
+drwxr-xr-x  17 thief  admin  578  7  9 11:35 .
+drwxr-xr-x  28 root   wheel  952  9 22 18:57 ..
+drwxr-xr-x   3 thief  admin  102  7  7 22:39 freetype
+drwxr-xr-x   3 thief  admin  102  7  7 22:46 gettext
+drwxr-xr-x   3 thief  admin  102 10 17  2014 git
+drwxr-xr-x   3 thief  admin  102  7  7 23:25 icu4c
+drwxr-xr-x   3 thief  admin  102  7  7 23:26 jpeg
+drwxr-xr-x   3 thief  admin  102  7  7 22:39 libpng
+drwxr-xr-x   3 thief  admin  102 10 17  2014 mysql
+drwxr-xr-x   3 thief  admin  102  6 21 22:41 nginx
+drwxr-xr-x   4 thief  admin  136  6 21 22:40 openssl
+drwxr-xr-x   3 thief  admin  102  6 21 22:39 pcre
+drwxr-xr-x   3 thief  admin  102  7  7 23:35 php70
+drwxr-xr-x   3 thief  admin  102  7  9 02:35 php70-xdebug
+drwxr-xr-x   3 thief  admin  102  7  7 23:26 readline
+drwxr-xr-x   3 thief  admin  102  7  7 23:26 unixodbc
+drwxr-xr-x   3 thief  admin  102  7  9 09:34 wget
+thief-MBP:Cellar thief$ 
+
+
+
+-------------------------------------------------
+
+mac下 配置系统环境变量 bashrc 配置域名 hosts 文件 所在目录
+
+Last login: Thu Jul  7 23:11:48 on ttys000
+thief-MacBook-Pro:~ thief$ echo $PATH
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/bin:/Users/thief/Documents/apache-ant-1.9.7/bin
+thief-MacBook-Pro:~ thief$ cd /
+thief-MacBook-Pro:/ thief$ ls -la
+total 77
+drwxr-xr-x  31 root  wheel   1122  6 12 21:47 .
+drwxr-xr-x  31 root  wheel   1122  6 12 21:47 ..
+-rw-rw-r--@  1 root  admin  10244  7  7 23:39 .DS_Store
+d--x--x--x   9 root  wheel    306  7  7 19:59 .DocumentRevisions-V100
+drwxr-xr-x   2 root  wheel     68  6 28  2014 .PKInstallSandboxManager
+drwx------   5 root  wheel    170  6 28  2014 .Spotlight-V100
+d-wx-wx-wt   2 root  wheel     68 10 17  2014 .Trashes
+----------   1 root  admin      0  7 13  2015 .file
+drwx------   9 root  wheel    306  7  7 23:01 .fseventsd
+drwxr-xr-x@  2 root  wheel     68  9 10  2014 .vol
+drwxrwxr-x+ 78 root  admin   2652  6 26 12:55 Applications
+drwxr-xr-x+ 67 root  wheel   2278  8 14  2015 Library
+drwxr-xr-x@  2 root  wheel     68  9 10  2014 Network
+drwxr-xr-x+  5 root  wheel    170 10 17  2014 System
+drwxr-xr-x   6 root  admin    204  4  3  2015 Users
+drwxrwxrwt@  7 root  admin    238  7  7 23:00 Volumes
+drwxr-xr-x@ 39 root  wheel   1326  8 24  2015 bin
+drwxrwxr-t@  2 root  admin     68  9 10  2014 cores
+dr-xr-xr-x   3 root  wheel   4410  7  7 19:59 dev
+lrwxr-xr-x@  1 root  wheel     11 10 17  2014 etc -> private/etc
+dr-xr-xr-x   2 root  wheel      1  7  7 23:15 home
+-rw-r--r--@  1 root  wheel    313 10  1  2014 installer.failurerequests
+dr-xr-xr-x   2 root  wheel      1  7  7 23:15 net
+drwxr-xr-x@  6 root  wheel    204 10 17  2014 private
+drwxr-xr-x@ 59 root  wheel   2006  8 24  2015 sbin
+lrwxr-xr-x@  1 root  wheel     11 10 17  2014 tmp -> private/tmp
+drwxr-xr-x@ 13 root  wheel    442 12  4  2014 usr
+lrwxr-xr-x@  1 root  wheel     11 10 17  2014 var -> private/var
+lrwxr-xr-x   1 root  wheel     49  9 23  2014 用户信息 -> /Library/Documentation/User Information.localized
+thief-MacBook-Pro:/ thief$ cd private/etc
+thief-MacBook-Pro:etc thief$ ls -la
+total 2936
+drwxr-xr-x  98 root   wheel    3332  7  7 00:21 .
+drwxr-xr-x@  6 root   wheel     204 10 17  2014 ..
+-rw-r--r--   1 root   wheel     515  9 10  2014 afpovertcp.cfg
+lrwxr-xr-x   1 root   wheel      15 10 17  2014 aliases -> postfix/aliases
+-rw-r-----   1 root   wheel   16384  9 10  2014 aliases.db
+drwxr-xr-x  11 root   wheel     374  8 24  2015 apache2
+drwxr-xr-x  38 root   wheel    1292  7 23  2015 asl
+-rw-r--r--   1 root   wheel     975  9 10  2014 asl.conf
+-rw-r--r--   1 root   wheel     149  9 19  2014 auto_home
+-rw-r--r--   1 root   wheel     194  9 19  2014 auto_master
+-rw-r--r--   1 root   wheel    1935  9 19  2014 autofs.conf
+-r--r--r--   1 root   wheel     958  6 12 22:13 bashrc
+-rw-r--r--   1 root   wheel    1312 12  7  2015 bootpd.plist
+-rw-r--r--   1 root   wheel      82  4 19 08:44 com.apple.screensharing.agent.launchd
+-rw-r--r--   1 root   wheel     189  9 10  2014 csh.cshrc
+-rw-r--r--   1 root   wheel     121  9 10  2014 csh.login
+-rw-r--r--   1 root   wheel      39  9 10  2014 csh.logout
+drwxr-xr-x  17 root   _lp       578  6  8 23:11 cups
+drwxr-xr-x   3 root   wheel     102  9 10  2014 defaults
+-rw-r--r--   1 root   wheel    2378  9 10  2014 dnsextd.conf
+-rw-r--r--   1 root   wheel    1029  9 10  2014 efax.rc
+drwxr-xr-x   4 root   wheel     136  9 10  2014 emond.d
+-rw-r--r--   1 root   wheel       0  9 10  2014 find.codes
+-rw-r--r--   1 root   wheel     150  9 10  2014 fstab.hd
+-rw-r--r--   1 root   wheel      54  9 10  2014 ftpd.conf
+-r--r--r--   1 root   wheel      54  9 10  2014 ftpd.conf.default
+-rw-r--r--   1 root   wheel     119  9 10  2014 ftpusers
+-rw-r--r--   1 root   wheel    5678  9 10  2014 gettytab
+-rw-r--r--   1 root   wheel    2345  7 13  2015 group
+-rw-r--r--   1 root   wheel    2173  6 28  2014 group~previous
+-rw-r--r--   1 root   wheel     657  5 30 23:43 hosts
+-rw-r--r--   1 root   wheel       0  9 10  2014 hosts.equiv
+-rw-rw-rw-@  1 thief  wheel     542 12 28  2015 hosts.mamp.bak
+-r--r--r--   1 root   wheel    1299  9 10  2014 irbrc
+-rw-r--r--   1 root   wheel       0  9 10  2014 kern_loader.conf
+-rw-------   1 root   wheel    1946 10 17  2014 krb5.keytab
+lrwxr-xr-x   1 root   wheel      33  6 28 21:56 localtime -> /usr/share/zoneinfo/Asia/Shanghai
+-rw-r--r--   1 root   wheel     616  9 10  2014 locate.rc
+drwxr-xr-x   2 root   wheel      68  9 10  2014 mach_init.d
+drwxr-xr-x   2 root   wheel      68  9 10  2014 mach_init_per_login_session.d
+drwxr-xr-x   2 root   wheel      68  9 10  2014 mach_init_per_user.d
+-rw-r--r--   1 root   wheel     106  9 10  2014 mail.rc
+-rw-r--r--   1 root   wheel    4574  9 10  2014 man.conf
+-rw-r--r--   1 root   wheel      36  9 10  2014 manpaths
+drwxr-xr-x   2 root   wheel      68  9 10  2014 manpaths.d
+-rw-------   1 root   wheel    5633  6 28  2014 master.passwd
+-rw-------   1 root   wheel    5986  9 10  2014 master.passwd~orig
+-rw-r--r--   1 root   wheel  242153  9 10  2014 moduli
+-rw-r--r--   1 root   wheel  242153  6 28  2014 moduli~previous
+-rw-r--r--   1 root   wheel      11  9 10  2014 nanorc
+-rw-r--r--   1 root   wheel      53  9 10  2014 networks
+-rw-r--r--   1 root   wheel    1318  9 10  2014 newsyslog.conf
+drwxr-xr-x   6 root   wheel     204 10 17  2014 newsyslog.d
+-rw-r--r--   1 root   wheel      43  9 10  2014 nfs.conf
+-rw-r--r--   1 root   wheel     303  9 10  2014 notify.conf
+-rw-r--r--   1 root   wheel     414 12 21  2014 ntp-restrict.conf
+-rw-r--r--@  1 root   wheel      27  8  8  2015 ntp.conf
+-rw-r--r--   1 root   wheel      23  9 10  2014 ntp_opendirectory.conf
+drwxr-xr-x   8 root   wheel     272 10 17  2014 openldap
+drwxr-xr-x  18 root   wheel     612  1 12  2015 pam.d
+-rw-r--r--   1 root   wheel    5253  6 28  2014 passwd
+-rw-r--r--   1 root   wheel    5581  9 10  2014 passwd~orig
+-rw-r--r--   1 root   wheel      45  9 10  2014 paths
+drwxr-xr-x   2 root   wheel      68  9 10  2014 paths.d
+drwxr-xr-x   5 root   wheel     170  9 10  2014 periodic
+drwxr-xr-x   3 root   wheel     102  9 10  2014 pf.anchors
+-rw-r--r--   1 root   wheel    1027  9 10  2014 pf.conf
+-rw-r--r--   1 root   wheel   28311  9 10  2014 pf.os
+-rw-r--r--   1 root   wheel   22488  5 20  2015 php-fpm.conf.default
+-r--r--r--   1 root   wheel   69266  2 26  2015 php.ini.default
+-r--r--r--   1 root   wheel   65459  9 23  2014 php.ini.default-5.2-previous
+drwxr-xr-x  19 root   wheel     646  9 10  2014 postfix
+drwxrwxrwx   4 root   wheel     136  1  1  2016 ppp
+-r--r--r--   1 root   wheel     189  9 27  2014 profile
+-rw-r--r--   1 root   wheel    5766  9 10  2014 protocols
+drwxr-xr-x   4 root   wheel     136 10 17  2014 racoon
+-rw-r--r--   1 root   wheel    1561  9 10  2014 rc.common
+-r-xr-xr-x   1 root   wheel     894  9 10  2014 rc.imaging
+-rw-r--r--   1 root   wheel    5257  9 19  2014 rc.netboot
+lrwxr-xr-x   1 root   wheel      22 10 17  2014 resolv.conf -> ../var/run/resolv.conf
+-rw-r--r--   1 root   wheel       0  9 10  2014 rmtab
+-rw-r--r--   1 root   wheel     971  9 10  2014 rpc
+-rw-r--r--   1 root   wheel     891  9 19  2014 rtadvd.conf
+drwxr-xr-x   7 root   wheel     238  9 10  2014 security
+-rw-r--r--   1 root   wheel  678134  1 12  2015 services
+-rw-r--r--   1 root   wheel  678053  1 12  2015 services.broker
+-rw-r--r--   1 root   wheel     179  9 10  2014 shells
+drwxr-xr-x   4 root   wheel     136  8 24  2015 snmp
+-rw-r--r--   1 root   wheel    3847  6 28  2014 ssh_config
+-rw-r--r--   1 root   wheel    3847  9 10  2014 ssh_config~orig
+-rw-r--r--   1 root   wheel    4062  9 10  2014 sshd_config
+-rw-r--r--   1 root   wheel    4062  6 28  2014 sshd_config~previous
+-r--r-----   1 root   wheel     257  7 25  2015 sudo_lecture
+-r--r-----   1 root   wheel    1275  9 10  2014 sudoers
+-rw-r--r--   1 root   wheel      96  9 10  2014 syslog.conf
+-rw-r--r--   1 root   wheel    1316  9 10  2014 ttys
+-rw-r--r--   1 root   wheel       0  9 10  2014 xtab
+-r--r--r--   1 root   wheel     126  9 10  2014 zshenv
+thief-MacBook-Pro:etc thief$ cd /usr/local
+thief-MacBook-Pro:local thief$ ls -la
+total 64
+drwxrwxr-x  25 root   admin   850  7  7 23:35 .
+drwxr-xr-x@ 13 root   wheel   442 12  4  2014 ..
+drwxr-xr-x  14 thief  admin   476  6 21 22:18 .git
+drwxr-xr-x   5 thief  admin   170  6 21 22:17 .github
+-rw-r--r--   1 thief  admin  1031  6 21 22:17 .gitignore
+-rw-r--r--   1 thief  admin   861  6 21 22:17 .travis.yml
+-rw-r--r--   1 thief  admin   291  6 21 22:17 .yardopts
+-rw-r--r--   1 thief  admin  3161  6 21 22:17 CODEOFCONDUCT.md
+drwxr-xr-x  15 thief  admin   510  7  7 23:35 Cellar
+-rw-r--r--   1 thief  admin  1241  6 21 22:17 LICENSE.txt
+drwxr-xr-x  12 thief  admin   408  6 21 22:18 Library
+-rw-r--r--   1 thief  admin  4266  6 21 22:17 README.md
+drwxr-xr-x  94 thief  admin  3196  7  7 23:35 bin
+drwxr-xr-x   8 thief  admin   272  7  7 23:35 etc
+drwxr-xr-x   2 thief  admin    68  6 14 22:39 gcc6.1.0
+drwxr-xr-x  30 thief  admin  1020  7  7 23:35 include
+drwxr-xr-x  60 thief  admin  2040  7  7 23:35 lib
+drwxr-xr-x  11 root   admin   374  9  5  2015 machook
+lrwxr-xr-x   1 root   wheel    27  8 21  2015 mysql -> mysql-5.6.26-osx10.8-x86_64
+drwxr-xr-x  17 root   wheel   578  8 21  2015 mysql-5.6.26-osx10.8-x86_64
+drwxr-xr-x  15 thief  admin   510  7  7 23:35 opt
+drwxr-xr-x   6 root   admin   204  6 21 21:38 pcre8.38
+drwxr-xr-x   4 thief  admin   136  7  7 23:35 sbin
+drwxr-xr-x  11 thief  admin   374 10 17  2014 share
+drwxr-xr-x   6 thief  admin   204  6 21 22:41 var
+thief-MacBook-Pro:local thief$ cd etc
+thief-MacBook-Pro:etc thief$ ls -la
+total 16
+drwxr-xr-x   8 thief  admin  272  7  7 23:35 .
+drwxrwxr-x  25 root   admin  850  7  7 23:35 ..
+drwxr-xr-x   7 thief  admin  238  6 21 22:17 bash_completion.d
+drwxr-xr-x  18 thief  admin  612  6 21 22:41 nginx
+lrwxr-xr-x   1 thief  admin   37  7  7 23:26 odbc.ini -> ../Cellar/unixodbc/2.3.4/etc/odbc.ini
+lrwxr-xr-x   1 thief  admin   41  7  7 23:26 odbcinst.ini -> ../Cellar/unixodbc/2.3.4/etc/odbcinst.ini
+drwxr-xr-x   8 thief  admin  272  6 21 22:41 openssl
+drwxr-xr-x   3 thief  admin  102  7  7 23:35 php
+thief-MacBook-Pro:etc thief$ cd ../
+thief-MacBook-Pro:local thief$ ls -la
+total 64
+drwxrwxr-x  25 root   admin   850  7  7 23:35 .
+drwxr-xr-x@ 13 root   wheel   442 12  4  2014 ..
+drwxr-xr-x  14 thief  admin   476  6 21 22:18 .git
+drwxr-xr-x   5 thief  admin   170  6 21 22:17 .github
+-rw-r--r--   1 thief  admin  1031  6 21 22:17 .gitignore
+-rw-r--r--   1 thief  admin   861  6 21 22:17 .travis.yml
+-rw-r--r--   1 thief  admin   291  6 21 22:17 .yardopts
+-rw-r--r--   1 thief  admin  3161  6 21 22:17 CODEOFCONDUCT.md
+drwxr-xr-x  15 thief  admin   510  7  7 23:35 Cellar
+-rw-r--r--   1 thief  admin  1241  6 21 22:17 LICENSE.txt
+drwxr-xr-x  12 thief  admin   408  6 21 22:18 Library
+-rw-r--r--   1 thief  admin  4266  6 21 22:17 README.md
+drwxr-xr-x  94 thief  admin  3196  7  7 23:35 bin
+drwxr-xr-x   8 thief  admin   272  7  7 23:35 etc
+drwxr-xr-x   2 thief  admin    68  6 14 22:39 gcc6.1.0
+drwxr-xr-x  30 thief  admin  1020  7  7 23:35 include
+drwxr-xr-x  60 thief  admin  2040  7  7 23:35 lib
+drwxr-xr-x  11 root   admin   374  9  5  2015 machook
+lrwxr-xr-x   1 root   wheel    27  8 21  2015 mysql -> mysql-5.6.26-osx10.8-x86_64
+drwxr-xr-x  17 root   wheel   578  8 21  2015 mysql-5.6.26-osx10.8-x86_64
+drwxr-xr-x  15 thief  admin   510  7  7 23:35 opt
+drwxr-xr-x   6 root   admin   204  6 21 21:38 pcre8.38
+drwxr-xr-x   4 thief  admin   136  7  7 23:35 sbin
+drwxr-xr-x  11 thief  admin   374 10 17  2014 share
+drwxr-xr-x   6 thief  admin   204  6 21 22:41 var
+thief-MacBook-Pro:local thief$ cd /usr
+thief-MacBook-Pro:usr thief$ ls -la
+total 8
+drwxr-xr-x@   13 root  wheel    442 12  4  2014 .
+drwxr-xr-x    31 root  wheel   1122  6 12 21:47 ..
+drwxr-xr-x     3 root  wheel    102  1 23  2014 LANDesk
+drwxr-xr-x     5 root  wheel    170  9 10  2014 X11
+lrwxr-xr-x     1 root  wheel      3 10 17  2014 X11R6 -> X11
+drwxr-xr-x  1057 root  wheel  35938  6 11 02:02 bin
+drwxr-xr-x   257 root  wheel   8738  3  3 19:51 include
+drwxr-xr-x   272 root  wheel   9248  6 11 02:02 lib
+drwxr-xr-x   171 root  wheel   5814  6 11 02:02 libexec
+drwxrwxr-x    25 root  admin    850  7  7 23:35 local
+drwxr-xr-x   245 root  wheel   8330  6 11 02:02 sbin
+drwxr-xr-x    44 root  wheel   1496 12  4  2014 share
+drwxr-xr-x     4 root  wheel    136 10 17  2014 standalone
+thief-MacBook-Pro:usr thief$ cd /
+thief-MacBook-Pro:/ thief$ ls -la
+total 77
+drwxr-xr-x  31 root  wheel   1122  6 12 21:47 .
+drwxr-xr-x  31 root  wheel   1122  6 12 21:47 ..
+-rw-rw-r--@  1 root  admin  10244  7  7 23:39 .DS_Store
+d--x--x--x   9 root  wheel    306  7  7 19:59 .DocumentRevisions-V100
+drwxr-xr-x   2 root  wheel     68  6 28  2014 .PKInstallSandboxManager
+drwx------   5 root  wheel    170  6 28  2014 .Spotlight-V100
+d-wx-wx-wt   2 root  wheel     68 10 17  2014 .Trashes
+----------   1 root  admin      0  7 13  2015 .file
+drwx------   9 root  wheel    306  7  7 23:01 .fseventsd
+drwxr-xr-x@  2 root  wheel     68  9 10  2014 .vol
+drwxrwxr-x+ 78 root  admin   2652  6 26 12:55 Applications
+drwxr-xr-x+ 67 root  wheel   2278  8 14  2015 Library
+drwxr-xr-x@  2 root  wheel     68  9 10  2014 Network
+drwxr-xr-x+  5 root  wheel    170 10 17  2014 System
+drwxr-xr-x   6 root  admin    204  4  3  2015 Users
+drwxrwxrwt@  7 root  admin    238  7  7 23:00 Volumes
+drwxr-xr-x@ 39 root  wheel   1326  8 24  2015 bin
+drwxrwxr-t@  2 root  admin     68  9 10  2014 cores
+dr-xr-xr-x   3 root  wheel   4410  7  7 19:59 dev
+lrwxr-xr-x@  1 root  wheel     11 10 17  2014 etc -> private/etc
+dr-xr-xr-x   2 root  wheel      1  7  7 23:15 home
+-rw-r--r--@  1 root  wheel    313 10  1  2014 installer.failurerequests
+dr-xr-xr-x   2 root  wheel      1  7  7 23:15 net
+drwxr-xr-x@  6 root  wheel    204 10 17  2014 private
+drwxr-xr-x@ 59 root  wheel   2006  8 24  2015 sbin
+lrwxr-xr-x@  1 root  wheel     11 10 17  2014 tmp -> private/tmp
+drwxr-xr-x@ 13 root  wheel    442 12  4  2014 usr
+lrwxr-xr-x@  1 root  wheel     11 10 17  2014 var -> private/var
+lrwxr-xr-x   1 root  wheel     49  9 23  2014 用户信息 -> /Library/Documentation/User Information.localized
+thief-MacBook-Pro:/ thief$ cd private/etc
+thief-MacBook-Pro:etc thief$ ls -la
+total 2936
+drwxr-xr-x  98 root   wheel    3332  7  7 00:21 .
+drwxr-xr-x@  6 root   wheel     204 10 17  2014 ..
+-rw-r--r--   1 root   wheel     515  9 10  2014 afpovertcp.cfg
+lrwxr-xr-x   1 root   wheel      15 10 17  2014 aliases -> postfix/aliases
+-rw-r-----   1 root   wheel   16384  9 10  2014 aliases.db
+drwxr-xr-x  11 root   wheel     374  8 24  2015 apache2
+drwxr-xr-x  38 root   wheel    1292  7 23  2015 asl
+-rw-r--r--   1 root   wheel     975  9 10  2014 asl.conf
+-rw-r--r--   1 root   wheel     149  9 19  2014 auto_home
+-rw-r--r--   1 root   wheel     194  9 19  2014 auto_master
+-rw-r--r--   1 root   wheel    1935  9 19  2014 autofs.conf
+-r--r--r--   1 root   wheel     958  6 12 22:13 bashrc
+-rw-r--r--   1 root   wheel    1312 12  7  2015 bootpd.plist
+-rw-r--r--   1 root   wheel      82  4 19 08:44 com.apple.screensharing.agent.launchd
+-rw-r--r--   1 root   wheel     189  9 10  2014 csh.cshrc
+-rw-r--r--   1 root   wheel     121  9 10  2014 csh.login
+-rw-r--r--   1 root   wheel      39  9 10  2014 csh.logout
+drwxr-xr-x  17 root   _lp       578  6  8 23:11 cups
+drwxr-xr-x   3 root   wheel     102  9 10  2014 defaults
+-rw-r--r--   1 root   wheel    2378  9 10  2014 dnsextd.conf
+-rw-r--r--   1 root   wheel    1029  9 10  2014 efax.rc
+drwxr-xr-x   4 root   wheel     136  9 10  2014 emond.d
+-rw-r--r--   1 root   wheel       0  9 10  2014 find.codes
+-rw-r--r--   1 root   wheel     150  9 10  2014 fstab.hd
+-rw-r--r--   1 root   wheel      54  9 10  2014 ftpd.conf
+-r--r--r--   1 root   wheel      54  9 10  2014 ftpd.conf.default
+-rw-r--r--   1 root   wheel     119  9 10  2014 ftpusers
+-rw-r--r--   1 root   wheel    5678  9 10  2014 gettytab
+-rw-r--r--   1 root   wheel    2345  7 13  2015 group
+-rw-r--r--   1 root   wheel    2173  6 28  2014 group~previous
+-rw-r--r--   1 root   wheel     657  5 30 23:43 hosts
+-rw-r--r--   1 root   wheel       0  9 10  2014 hosts.equiv
+-rw-rw-rw-@  1 thief  wheel     542 12 28  2015 hosts.mamp.bak
+-r--r--r--   1 root   wheel    1299  9 10  2014 irbrc
+-rw-r--r--   1 root   wheel       0  9 10  2014 kern_loader.conf
+-rw-------   1 root   wheel    1946 10 17  2014 krb5.keytab
+lrwxr-xr-x   1 root   wheel      33  6 28 21:56 localtime -> /usr/share/zoneinfo/Asia/Shanghai
+-rw-r--r--   1 root   wheel     616  9 10  2014 locate.rc
+drwxr-xr-x   2 root   wheel      68  9 10  2014 mach_init.d
+drwxr-xr-x   2 root   wheel      68  9 10  2014 mach_init_per_login_session.d
+drwxr-xr-x   2 root   wheel      68  9 10  2014 mach_init_per_user.d
+-rw-r--r--   1 root   wheel     106  9 10  2014 mail.rc
+-rw-r--r--   1 root   wheel    4574  9 10  2014 man.conf
+-rw-r--r--   1 root   wheel      36  9 10  2014 manpaths
+drwxr-xr-x   2 root   wheel      68  9 10  2014 manpaths.d
+-rw-------   1 root   wheel    5633  6 28  2014 master.passwd
+-rw-------   1 root   wheel    5986  9 10  2014 master.passwd~orig
+-rw-r--r--   1 root   wheel  242153  9 10  2014 moduli
+-rw-r--r--   1 root   wheel  242153  6 28  2014 moduli~previous
+-rw-r--r--   1 root   wheel      11  9 10  2014 nanorc
+-rw-r--r--   1 root   wheel      53  9 10  2014 networks
+-rw-r--r--   1 root   wheel    1318  9 10  2014 newsyslog.conf
+drwxr-xr-x   6 root   wheel     204 10 17  2014 newsyslog.d
+-rw-r--r--   1 root   wheel      43  9 10  2014 nfs.conf
+-rw-r--r--   1 root   wheel     303  9 10  2014 notify.conf
+-rw-r--r--   1 root   wheel     414 12 21  2014 ntp-restrict.conf
+-rw-r--r--@  1 root   wheel      27  8  8  2015 ntp.conf
+-rw-r--r--   1 root   wheel      23  9 10  2014 ntp_opendirectory.conf
+drwxr-xr-x   8 root   wheel     272 10 17  2014 openldap
+drwxr-xr-x  18 root   wheel     612  1 12  2015 pam.d
+-rw-r--r--   1 root   wheel    5253  6 28  2014 passwd
+-rw-r--r--   1 root   wheel    5581  9 10  2014 passwd~orig
+-rw-r--r--   1 root   wheel      45  9 10  2014 paths
+drwxr-xr-x   2 root   wheel      68  9 10  2014 paths.d
+drwxr-xr-x   5 root   wheel     170  9 10  2014 periodic
+drwxr-xr-x   3 root   wheel     102  9 10  2014 pf.anchors
+-rw-r--r--   1 root   wheel    1027  9 10  2014 pf.conf
+-rw-r--r--   1 root   wheel   28311  9 10  2014 pf.os
+-rw-r--r--   1 root   wheel   22488  5 20  2015 php-fpm.conf.default
+-r--r--r--   1 root   wheel   69266  2 26  2015 php.ini.default
+-r--r--r--   1 root   wheel   65459  9 23  2014 php.ini.default-5.2-previous
+drwxr-xr-x  19 root   wheel     646  9 10  2014 postfix
+drwxrwxrwx   4 root   wheel     136  1  1  2016 ppp
+-r--r--r--   1 root   wheel     189  9 27  2014 profile
+-rw-r--r--   1 root   wheel    5766  9 10  2014 protocols
+drwxr-xr-x   4 root   wheel     136 10 17  2014 racoon
+-rw-r--r--   1 root   wheel    1561  9 10  2014 rc.common
+-r-xr-xr-x   1 root   wheel     894  9 10  2014 rc.imaging
+-rw-r--r--   1 root   wheel    5257  9 19  2014 rc.netboot
+lrwxr-xr-x   1 root   wheel      22 10 17  2014 resolv.conf -> ../var/run/resolv.conf
+-rw-r--r--   1 root   wheel       0  9 10  2014 rmtab
+-rw-r--r--   1 root   wheel     971  9 10  2014 rpc
+-rw-r--r--   1 root   wheel     891  9 19  2014 rtadvd.conf
+drwxr-xr-x   7 root   wheel     238  9 10  2014 security
+-rw-r--r--   1 root   wheel  678134  1 12  2015 services
+-rw-r--r--   1 root   wheel  678053  1 12  2015 services.broker
+-rw-r--r--   1 root   wheel     179  9 10  2014 shells
+drwxr-xr-x   4 root   wheel     136  8 24  2015 snmp
+-rw-r--r--   1 root   wheel    3847  6 28  2014 ssh_config
+-rw-r--r--   1 root   wheel    3847  9 10  2014 ssh_config~orig
+-rw-r--r--   1 root   wheel    4062  9 10  2014 sshd_config
+-rw-r--r--   1 root   wheel    4062  6 28  2014 sshd_config~previous
+-r--r-----   1 root   wheel     257  7 25  2015 sudo_lecture
+-r--r-----   1 root   wheel    1275  9 10  2014 sudoers
+-rw-r--r--   1 root   wheel      96  9 10  2014 syslog.conf
+-rw-r--r--   1 root   wheel    1316  9 10  2014 ttys
+-rw-r--r--   1 root   wheel       0  9 10  2014 xtab
+-r--r--r--   1 root   wheel     126  9 10  2014 zshenv
+thief-MacBook-Pro:etc thief$ vi bashrc 
+thief-MacBook-Pro:etc thief$ vi hosts
+thief-MacBook-Pro:etc thief$ 
+
+
+
+-----------------------------------------------
+
+
+bashrc配置文件正确内容
+
+# Tell the terminal about the working directory at each prompt.
+if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
+    update_terminal_cwd() {
+        # Identify the directory using a "file:" scheme URL,
+        # including the host name to disambiguate local vs.
+        # remote connections. Percent-escape spaces.
+        local SEARCH=' '
+        local REPLACE='%20'
+        local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
+        printf '\e]7;%s\a' "$PWD_URL"
+    }
+    PROMPT_COMMAND="update_terminal_cwd; $PROMPT_COMMAND"
+fi
+export JAVA_HOME="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home"
+export CLASS_PATH="$JAVA_HOME/lib"
+export ANT_HOME="/Users/thief/Documents/apache-ant-1.9.7"
+export PATH="$PATH:$JAVA_HOME/bin:$ANT_HOME/bin"
+
+//安装eclipse－－－JEE eclipse－－－PHP由于mac自带的java jdk是1.6.0版本 但是安装包需要1.7.0 导致无法安装 打开 问题更新1.7.0jdk
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------
+上次使用FPM未正常关闭第二次启用时端口号被占用的情况
+Last login: Fri Jul 15 22:28:44 on ttys000
+thief-MacBook-Pro:~ thief$ nginx
+nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /usr/local/etc/nginx/nginx.conf:1
+thief-MacBook-Pro:~ thief$ cd /usr/local/
+thief-MacBook-Pro:local thief$ ls -la
+total 64
+drwxrwxr-x  25 root   admin   850  7  7 23:35 .
+drwxr-xr-x@ 13 root   wheel   442 12  4  2014 ..
+drwxr-xr-x  14 thief  admin   476  6 21 22:18 .git
+drwxr-xr-x   5 thief  admin   170  6 21 22:17 .github
+-rw-r--r--   1 thief  admin  1031  6 21 22:17 .gitignore
+-rw-r--r--   1 thief  admin   861  6 21 22:17 .travis.yml
+-rw-r--r--   1 thief  admin   291  6 21 22:17 .yardopts
+-rw-r--r--   1 thief  admin  3161  6 21 22:17 CODEOFCONDUCT.md
+drwxr-xr-x  17 thief  admin   578  7  9 11:35 Cellar
+-rw-r--r--   1 thief  admin  1241  6 21 22:17 LICENSE.txt
+drwxr-xr-x  12 thief  admin   408  6 21 22:18 Library
+-rw-r--r--   1 thief  admin  4266  6 21 22:17 README.md
+drwxr-xr-x  95 thief  admin  3230  7  9 11:35 bin
+drwxr-xr-x   9 thief  admin   306  7  9 09:34 etc
+drwxr-xr-x   2 thief  admin    68  6 14 22:39 gcc6.1.0
+drwxr-xr-x  30 thief  admin  1020  7  7 23:35 include
+drwxr-xr-x  60 thief  admin  2040  7  7 23:35 lib
+drwxr-xr-x  11 root   admin   374  9  5  2015 machook
+lrwxr-xr-x   1 root   wheel    27  8 21  2015 mysql -> mysql-5.6.26-osx10.8-x86_64
+drwxr-xr-x  17 root   wheel   578  8 21  2015 mysql-5.6.26-osx10.8-x86_64
+drwxr-xr-x  17 thief  admin   578  7  9 11:35 opt
+drwxr-xr-x   6 root   admin   204  6 21 21:38 pcre8.38
+drwxr-xr-x   4 thief  admin   136  7  7 23:35 sbin
+drwxr-xr-x  12 thief  admin   408  7  9 09:34 share
+drwxr-xr-x   6 thief  admin   204  6 21 22:41 var
+thief-MacBook-Pro:local thief$ cd etc
+thief-MacBook-Pro:etc thief$ ls -la
+total 32
+drwxr-xr-x   9 thief  admin   306  7  9 09:34 .
+drwxrwxr-x  25 root   admin   850  7  7 23:35 ..
+drwxr-xr-x   7 thief  admin   238  6 21 22:17 bash_completion.d
+drwxr-xr-x  18 thief  admin   612  7 10 19:42 nginx
+lrwxr-xr-x   1 thief  admin    37  7  7 23:26 odbc.ini -> ../Cellar/unixodbc/2.3.4/etc/odbc.ini
+lrwxr-xr-x   1 thief  admin    41  7  7 23:26 odbcinst.ini -> ../Cellar/unixodbc/2.3.4/etc/odbcinst.ini
+drwxr-xr-x   8 thief  admin   272  6 21 22:41 openssl
+drwxr-xr-x   3 thief  admin   102  7  7 23:35 php
+-rw-r--r--   1 thief  admin  4945  7  9 09:34 wgetrc
+thief-MacBook-Pro:etc thief$ cd nginx
+thief-MacBook-Pro:nginx thief$ ls -la
+total 120
+drwxr-xr-x  18 thief  admin   612  7 10 19:42 .
+drwxr-xr-x   9 thief  admin   306  7  9 09:34 ..
+-rw-r--r--   1 thief  admin  1077  6 21 22:41 fastcgi.conf
+-rw-r--r--   1 thief  admin  1077  6 21 22:41 fastcgi.conf.default
+-rw-r--r--   1 thief  admin  1007  6 21 22:41 fastcgi_params
+-rw-r--r--   1 thief  admin  1007  6 21 22:41 fastcgi_params.default
+-rw-r--r--   1 thief  admin  2837  6 21 22:41 koi-utf
+-rw-r--r--   1 thief  admin  2223  6 21 22:41 koi-win
+-rw-r--r--   1 thief  admin  3957  6 21 22:41 mime.types
+-rw-r--r--   1 thief  admin  3957  6 21 22:41 mime.types.default
+-rw-r--r--   1 thief  admin  3067  7  9 01:47 nginx.conf
+-rw-r--r--   1 thief  admin  2680  6 21 22:41 nginx.conf.default
+-rw-r--r--   1 thief  admin   636  6 21 22:41 scgi_params
+-rw-r--r--   1 thief  admin   636  6 21 22:41 scgi_params.default
+drwxr-xr-x   2 thief  admin    68  6 21 22:41 servers
+-rw-r--r--   1 thief  admin   664  6 21 22:41 uwsgi_params
+-rw-r--r--   1 thief  admin   664  6 21 22:41 uwsgi_params.default
+-rw-r--r--   1 thief  admin  3610  6 21 22:41 win-utf
+thief-MacBook-Pro:nginx thief$ sudo vi nginx.conf
+Password:
+Sorry, try again.
+Password:
+thief-MacBook-Pro:nginx thief$ 
+thief-MacBook-Pro:nginx thief$ nginx -s reload
+nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /usr/local/etc/nginx/nginx.conf:1
+nginx: [emerg] duplicate location "/" in /usr/local/etc/nginx/nginx.conf:70
+thief-MacBook-Pro:nginx thief$ sudo vi nginx.conf
+Password:
+thief-MacBook-Pro:nginx thief$ nginx -s reload
+nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /usr/local/etc/nginx/nginx.conf:1
+thief-MacBook-Pro:nginx thief$ php70-fpm -start
+Usage: /usr/local/Cellar/php70/7.0.8/sbin/php70-fpm {start|stop|force-quit|restart|reload|status|configtest}
+thief-MacBook-Pro:nginx thief$ php70-fpm  start
+-n Starting php-fpm 
+PHP:  syntax error, unexpected END_OF_LINE, expecting '=' in /usr/local/etc/php/7.0/php.ini on line 1871
+[16-Jul-2016 08:23:24] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
+[16-Jul-2016 08:23:24] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
+ done
+thief-MacBook-Pro:nginx thief$ sudo vi /usr/local/etc/php/7.0/php.ini
+thief-MacBook-Pro:nginx thief$ pgp70-fpm start
+-bash: pgp70-fpm: command not found
+thief-MacBook-Pro:nginx thief$ php70-fpm
+Usage: /usr/local/Cellar/php70/7.0.8/sbin/php70-fpm {start|stop|force-quit|restart|reload|status|configtest}
+thief-MacBook-Pro:nginx thief$ php70-fpm start
+-n Starting php-fpm 
+[16-Jul-2016 08:25:51] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
+[16-Jul-2016 08:25:51] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
+[16-Jul-2016 08:25:51] ERROR: unable to bind listening socket for address '127.0.0.1:9000': Address already in use (48)
+[16-Jul-2016 08:25:51] ERROR: FPM initialization failed
+ failed
+thief-MacBook-Pro:nginx thief$ sudo vi /usr/local/etc/php/7.0/php.ini
+thief-MacBook-Pro:nginx thief$ php70-fpm start
+-n Starting php-fpm 
+[16-Jul-2016 08:33:36] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
+[16-Jul-2016 08:33:36] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
+[16-Jul-2016 08:33:36] ERROR: unable to bind listening socket for address '127.0.0.1:9000': Address already in use (48)
+[16-Jul-2016 08:33:36] ERROR: FPM initialization failed
+ failed
+thief-MacBook-Pro:nginx thief$ lsof -i tcp:9000
+COMMAND  PID  USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+eclipse 5833 thief  108u  IPv6 0x21cb693d287e4d03      0t0  TCP *:cslistener (LISTEN)
+php-fpm 5884 thief    7u  IPv4 0x21cb693d2715ab53      0t0  TCP localhost:cslistener (LISTEN)
+php-fpm 5886 thief    0u  IPv4 0x21cb693d2715ab53      0t0  TCP localhost:cslistener (LISTEN)
+php-fpm 5966 thief    0u  IPv4 0x21cb693d2715ab53      0t0  TCP localhost:cslistener (LISTEN)
+thief-MacBook-Pro:nginx thief$ php70-fpm start
+-n Starting php-fpm 
+[16-Jul-2016 08:36:13] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
+[16-Jul-2016 08:36:13] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
+[16-Jul-2016 08:36:13] ERROR: unable to bind listening socket for address '127.0.0.1:9000': Address already in use (48)
+[16-Jul-2016 08:36:13] ERROR: FPM initialization failed
+ failed
+thief-MacBook-Pro:nginx thief$ cd /usr/local
+thief-MacBook-Pro:local thief$ ls -la
+total 64
+drwxrwxr-x  25 root   admin   850  7  7 23:35 .
+drwxr-xr-x@ 13 root   wheel   442 12  4  2014 ..
+drwxr-xr-x  14 thief  admin   476  6 21 22:18 .git
+drwxr-xr-x   5 thief  admin   170  6 21 22:17 .github
+-rw-r--r--   1 thief  admin  1031  6 21 22:17 .gitignore
+-rw-r--r--   1 thief  admin   861  6 21 22:17 .travis.yml
+-rw-r--r--   1 thief  admin   291  6 21 22:17 .yardopts
+-rw-r--r--   1 thief  admin  3161  6 21 22:17 CODEOFCONDUCT.md
+drwxr-xr-x  17 thief  admin   578  7  9 11:35 Cellar
+-rw-r--r--   1 thief  admin  1241  6 21 22:17 LICENSE.txt
+drwxr-xr-x  12 thief  admin   408  6 21 22:18 Library
+-rw-r--r--   1 thief  admin  4266  6 21 22:17 README.md
+drwxr-xr-x  95 thief  admin  3230  7  9 11:35 bin
+drwxr-xr-x   9 thief  admin   306  7  9 09:34 etc
+drwxr-xr-x   2 thief  admin    68  6 14 22:39 gcc6.1.0
+drwxr-xr-x  30 thief  admin  1020  7  7 23:35 include
+drwxr-xr-x  60 thief  admin  2040  7  7 23:35 lib
+drwxr-xr-x  11 root   admin   374  9  5  2015 machook
+lrwxr-xr-x   1 root   wheel    27  8 21  2015 mysql -> mysql-5.6.26-osx10.8-x86_64
+drwxr-xr-x  17 root   wheel   578  8 21  2015 mysql-5.6.26-osx10.8-x86_64
+drwxr-xr-x  17 thief  admin   578  7  9 11:35 opt
+drwxr-xr-x   6 root   admin   204  6 21 21:38 pcre8.38
+drwxr-xr-x   4 thief  admin   136  7  7 23:35 sbin
+drwxr-xr-x  12 thief  admin   408  7  9 09:34 share
+drwxr-xr-x   6 thief  admin   204  6 21 22:41 var
+thief-MacBook-Pro:local thief$ cd rtc
+-bash: cd: rtc: No such file or directory
+thief-MacBook-Pro:local thief$ cd etc
+thief-MacBook-Pro:etc thief$ ls -la
+total 32
+drwxr-xr-x   9 thief  admin   306  7  9 09:34 .
+drwxrwxr-x  25 root   admin   850  7  7 23:35 ..
+drwxr-xr-x   7 thief  admin   238  6 21 22:17 bash_completion.d
+drwxr-xr-x  18 thief  admin   612  7 16 08:22 nginx
+lrwxr-xr-x   1 thief  admin    37  7  7 23:26 odbc.ini -> ../Cellar/unixodbc/2.3.4/etc/odbc.ini
+lrwxr-xr-x   1 thief  admin    41  7  7 23:26 odbcinst.ini -> ../Cellar/unixodbc/2.3.4/etc/odbcinst.ini
+drwxr-xr-x   8 thief  admin   272  6 21 22:41 openssl
+drwxr-xr-x   3 thief  admin   102  7  7 23:35 php
+-rw-r--r--   1 thief  admin  4945  7  9 09:34 wgetrc
+thief-MacBook-Pro:etc thief$ cd php
+thief-MacBook-Pro:php thief$ ls -la
+total 0
+drwxr-xr-x  3 thief  admin  102  7  7 23:35 .
+drwxr-xr-x  9 thief  admin  306  7  9 09:34 ..
+drwxr-xr-x  7 thief  admin  238  7 16 08:33 7.0
+thief-MacBook-Pro:php thief$ cd 7.0
+thief-MacBook-Pro:7.0 thief$ ls -la
+total 168
+drwxr-xr-x  7 thief  admin    238  7 16 08:33 .
+drwxr-xr-x  3 thief  admin    102  7  7 23:35 ..
+drwxr-xr-x  3 thief  admin    102  7  9 03:03 conf.d
+-rw-r--r--  1 thief  admin   4484  7  7 23:35 php-fpm.conf
+-rw-r--r--  1 thief  admin   4486  7  7 23:35 php-fpm.conf.default
+drwxr-xr-x  3 thief  admin    102  7  7 23:35 php-fpm.d
+-rw-r--r--  1 thief  admin  69307  7 16 08:25 php.ini
+thief-MacBook-Pro:7.0 thief$ suod vi php-fpm.conf
+-bash: suod: command not found
+thief-MacBook-Pro:7.0 thief$ sudo vi php-fpm.conf
+Password:
+thief-MacBook-Pro:7.0 thief$ sudo vi php-fpm.conf.default 
+thief-MacBook-Pro:7.0 thief$ php70-fpm start
+-n Starting php-fpm 
+[16-Jul-2016 08:40:22] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
+[16-Jul-2016 08:40:22] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
+[16-Jul-2016 08:40:22] ERROR: unable to bind listening socket for address '127.0.0.1:9000': Address already in use (48)
+[16-Jul-2016 08:40:22] ERROR: FPM initialization failed
+ failed
+thief-MacBook-Pro:7.0 thief$ lsof -i tcp:9000
+COMMAND  PID  USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+php-fpm 5884 thief    7u  IPv4 0x21cb693d2715ab53      0t0  TCP localhost:cslistener (LISTEN)
+php-fpm 5886 thief    0u  IPv4 0x21cb693d2715ab53      0t0  TCP localhost:cslistener (LISTEN)
+php-fpm 5966 thief    0u  IPv4 0x21cb693d2715ab53      0t0  TCP localhost:cslistener (LISTEN)
+thief-MacBook-Pro:7.0 thief$ kill -9 5884
+thief-MacBook-Pro:7.0 thief$ kill -9 5886
+thief-MacBook-Pro:7.0 thief$ kill -9 5966
+thief-MacBook-Pro:7.0 thief$ lsof -i tcp:9000
+thief-MacBook-Pro:7.0 thief$ php70-fpm start
+-n Starting php-fpm 
+[16-Jul-2016 08:41:40] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
+[16-Jul-2016 08:41:40] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
+ done
+thief-MacBook-Pro:7.0 thief$ lsof -i tcp:9000
+COMMAND  PID  USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+php-fpm 6043 thief    7u  IPv4 0x21cb693d2ff31f43      0t0  TCP localhost:cslistener (LISTEN)
+php-fpm 6044 thief    0u  IPv4 0x21cb693d2ff31f43      0t0  TCP localhost:cslistener (LISTEN)
+php-fpm 6045 thief    0u  IPv4 0x21cb693d2ff31f43      0t0  TCP localhost:cslistener (LISTEN)
+thief-MacBook-Pro:7.0 thief$ 
+
+
+---------------------------------------------------------------------
+
+nginx 配置文件
+
+
+Last login: Wed Jul 20 20:09:40 on ttys000
+thief-MacBook-Pro:~ thief$ cd /usr/local
+thief-MacBook-Pro:local thief$ cd etc
+thief-MacBook-Pro:etc thief$ ls -la
+total 32
+drwxr-xr-x   9 thief  admin   306  7  9 09:34 .
+drwxrwxr-x  25 root   admin   850  7  7 23:35 ..
+drwxr-xr-x   7 thief  admin   238  6 21 22:17 bash_completion.d
+drwxr-xr-x  19 thief  admin   646  7 20 20:14 nginx
+lrwxr-xr-x   1 thief  admin    37  7  7 23:26 odbc.ini -> ../Cellar/unixodbc/2.3.4/etc/odbc.ini
+lrwxr-xr-x   1 thief  admin    41  7  7 23:26 odbcinst.ini -> ../Cellar/unixodbc/2.3.4/etc/odbcinst.ini
+drwxr-xr-x   8 thief  admin   272  6 21 22:41 openssl
+drwxr-xr-x   3 thief  admin   102  7  7 23:35 php
+-rw-r--r--   1 thief  admin  4945  7  9 09:34 wgetrc
+thief-MacBook-Pro:etc thief$ cd nginx
+thief-MacBook-Pro:nginx thief$ ls -la
+total 168
+drwxr-xr-x  19 thief  admin    646  7 20 20:14 .
+drwxr-xr-x   9 thief  admin    306  7  9 09:34 ..
+-rw-r--r--   1 root   admin  20480  7 16 21:52 .nginx.conf.swp
+-rw-r--r--   1 thief  admin   1077  6 21 22:41 fastcgi.conf
+-rw-r--r--   1 thief  admin   1077  6 21 22:41 fastcgi.conf.default
+-rw-r--r--   1 thief  admin   1007  6 21 22:41 fastcgi_params
+-rw-r--r--   1 thief  admin   1007  6 21 22:41 fastcgi_params.default
+-rw-r--r--   1 thief  admin   2837  6 21 22:41 koi-utf
+-rw-r--r--   1 thief  admin   2223  6 21 22:41 koi-win
+-rw-r--r--   1 thief  admin   3957  6 21 22:41 mime.types
+-rw-r--r--   1 thief  admin   3957  6 21 22:41 mime.types.default
+-rw-r--r--   1 thief  admin   4141  7 16 19:48 nginx.conf
+-rw-r--r--   1 thief  admin   2680  6 21 22:41 nginx.conf.default
+-rw-r--r--   1 thief  admin    636  6 21 22:41 scgi_params
+-rw-r--r--   1 thief  admin    636  6 21 22:41 scgi_params.default
+drwxr-xr-x   2 thief  admin     68  6 21 22:41 servers
+-rw-r--r--   1 thief  admin    664  6 21 22:41 uwsgi_params
+-rw-r--r--   1 thief  admin    664  6 21 22:41 uwsgi_params.default
+-rw-r--r--   1 thief  admin   3610  6 21 22:41 win-utf
+thief-MacBook-Pro:nginx thief$ sudo vi nginx.conf
+thief-MacBook-Pro:nginx thief$ vim -r nginx.conf
+thief-MacBook-Pro:nginx thief$ sudo vi nginx.conf
+thief-MacBook-Pro:nginx thief$ vim -r nginx.conf
+
+user www www;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+----------------------------------------------------------
+
+
+mac下检查 端口号被谁占用 检查占用进程的进程号 关闭进程
+
+查看mac os x 的网络端口使用情况， telnet， nc， netstat， lsof， 网络实用工具
+正文
+查看端口是否打开
+使用 netstat 命令
+a. `netstat -nat | grep <端口号>`  , 如命令 `netstat -nat | grep 3306`
+b. `netstat -nat |grep LISTEN`
+使用 lsof 命令
+# yongfu-pro at yongfu-pro.local in ~ [22:39:32]
+$ lsof -n -P -i TCP -s TCP:LISTEN
+COMMAND PID       USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+php-fpm 387 yongfu-pro    6u  IPv4 0x6d7f5d3c3a615679      0t0  TCP 127.0.0.1:9000 (LISTEN)
+Dropbox 413 yongfu-pro   26u  IPv4 0x6d7f5d3c445e2c09      0t0  TCP *:17500 (LISTEN)
+php-fpm 418 yongfu-pro    0u  IPv4 0x6d7f5d3c3a615679      0t0  TCP 127.0.0.1:9000 (LISTEN)
+php-fpm 419 yongfu-pro    0u  IPv4 0x6d7f5d3c3a615679      0t0  TCP 127.0.0.1:9000 (LISTEN)
+php-fpm 420 yongfu-pro    0u  IPv4 0x6d7f5d3c3a615679      0t0  TCP 127.0.0.1:9000 (LISTEN)
+stunnel 586 yongfu-pro    9u  IPv4 0x6d7f5d3c439ff679      0t0  TCP 127.0.0.1:1997 (LISTEN)
+
+lsof命令可以列出当前的所有网络情况， 此命令的解释如下：
+-n 表示主机以ip地址显示
+-P 表示端口以数字形式显示，默认为端口名称
+-i 意义较多，具体 man lsof, 主要是用来过滤lsof的输出结果
+-s 和 -i 配合使用，用于过滤输出
+使用telnet 命令
+检查本机的3306端口是否打开， 如下
+telnet 127.0.0.1 3306  
+若该端口没有打开，则会自动退出，并显示如下内容：
+
+Trying 127.0.0.1...
+telnet: connect to address 127.0.0.1: Connection refused
+telnet: Unable to connect to remote host
+
+
