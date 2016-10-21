@@ -1,0 +1,379 @@
+{\rtf1\ansi\ansicpg936\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset0 MicrosoftYaHei;\f1\fnil\fcharset0 LucidaGrande;\f2\fnil\fcharset0 Verdana;
+\f3\fnil\fcharset134 STHeitiSC-Light;}
+{\colortbl;\red255\green255\blue255;\red54\green54\blue54;\red86\green47\blue36;\red35\green35\blue135;
+\red38\green38\blue38;\red249\green249\blue249;\red255\green39\blue18;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs28 \cf2 \expnd0\expndtw0\kerning0
+\uc0\u19968 . \u37197 \u32622 \u25991 \u20214 \u32467 \u26500 \
+\
+\pard\pardeftab720
+{\field{\*\fldinst{HYPERLINK "http://photo.blog.sina.com.cn/showpic.html#blogid=4ab26d7f0102w4mt&url=http://album.sina.com.cn/pic/001mOkuXty72wwjT2vH2d"}}{\fldrslt \cf3 \expnd0\expndtw0\kerning0
+{{\NeXTGraphic 001mOkuXty72wwjT2vH2d&690.png \width6390 \height9210 \noorient
+}¬}}}\pard\pardeftab720
+\cf2 \
+\
+\
+\
+\pard\pardeftab720
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\uc0\u20108 . \u20840 \u23616 \u22359 \u35814 \u35299 
+\fs28 \expnd0\expndtw0\kerning0
+\
+
+\fs32 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+#\uc0\u23450 \u20041 nginx\u36816 \u34892 \u30340 \u29992 \u25143 \u21644 \u29992 \u25143 \u32452 \
+\pard\pardeftab720
+\cf4 \expnd0\expndtw0\kerning0
+user www www;\cf2 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u23450 \u20041 nginx\u36827 \u31243 \u25968 \u65288 \u24314 \u35758 \u35774 \u32622 \u20026 CPU\u25968 \u65289 \
+\cf4 \expnd0\expndtw0\kerning0
+worker_processes 8;\cf2 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u20840 \u23616 \u38169 \u35823 \u26085 \u24535 \u23450 \u20041 \u31867 \u22411 \u65288 \u38169 \u35823 \u26085 \u24535 \u31867 \u22411 \u65306 [debug|info|notice|warn|error|crit]\u65292 \u20174 \u24038 \u21040 \u21491 \u38169 \u35823 \u20449 \u24687 \u36234 \u26469 \u36234 \u23569 \u65307 \u27492 \u25351 \u20196 \u21487 \u20197 \u22312 \u20840 \u23616 \u12289 http\u12289 server\u12289 location\u22359 \u20013 \u37197 \u32622 \u65289 \
+\cf4 \expnd0\expndtw0\kerning0
+error_log /var/log/nginx/error.log info;\cf2 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u23450 \u20041 \u36827 \u31243 \u25991 \u20214 \
+\cf4 \expnd0\expndtw0\kerning0
+pid /var/run/nginx.pid;\'a0\cf2 \expnd0\expndtw0\kerning0
+\
+\
+\
+\pard\pardeftab720
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\uc0\u19977 . events\u22359 \u35814 \u35299 
+\fs28 \expnd0\expndtw0\kerning0
+\
+#\uc0\u23450 \u20041 \u24037 \u20316 \u27169 \u24335 \
+\pard\pardeftab720
+\cf4 \expnd0\expndtw0\kerning0
+use epoll\cf2 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u36830 \u25509 \u25968 \u19978 \u38480 \u65288 \u21333 \u20010 \u36827 \u31243 \u30340 \u26368 \u22823 \u36830 \u25509 \u25968 \u65292 web\u26381 \u21153 \u22120 \u30340 \u26368 \u22823 \u35775 \u38382 \u29992 \u25143 \u25968  max clients = worker_processes * worker_connections\u65289 \
+\cf4 \expnd0\expndtw0\kerning0
+worker_connections 1024\cf2 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u32593 \u32476 \u36830 \u25509 \u24207 \u21015 \u21270 \u65288 \u20026 \u20102 \u36991 \u20813 \u21796 \u37266 \u22826 \u22810 \u30340 \u36827 \u31243 \u25968 \u65292 \u20250 \u24433 \u21709 \u31995 \u32479 \u24615 \u33021 \u65289 \
+\cf4 \expnd0\expndtw0\kerning0
+accept_mutex \'a0on\cf2 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u24037 \u20316 \u36827 \u31243 \u26159 \u21542 \u20801 \u35768 \u21516 \u26102 \u25509 \u25910 \u22810 \u20010 \u32593 \u32476 \u36830 \u25509 \
+\cf4 \expnd0\expndtw0\kerning0
+multi_accept \'a0on\cf2 \expnd0\expndtw0\kerning0
+\
+\
+\
+\pard\pardeftab720
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\uc0\u22235 . http\u22359 \u35814 \u35299 
+\fs28 \expnd0\expndtw0\kerning0
+\
+
+\fs32 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+#\uc0\u35774 \u23450 mime\u31867 \u22411 \u65288 MIME-Type\u31867 \u22411 \u30001 mime.type\u25991 \u20214 \u23450 \u20041 \u65289 \
+\pard\pardeftab720
+\cf4 \expnd0\expndtw0\kerning0
+include /etc/nginx/mime.types;\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+default_type application/octet-stream;\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+\cf2 \expnd0\expndtw0\kerning0
+#\uc0\u40664 \u35748 \u32534 \u30721 \
+\pard\pardeftab720
+\cf4 \expnd0\expndtw0\kerning0
+charset utf-8;\cf2 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u23450 \u20041 \u26381 \u21153 \u22120 \u26085 \u24535 \u65288 \u27492 \u22788 \u30340 \u26085 \u24535 \u19982 \u24120 \u35268 \u30340 \u19981 \u21516 \u65292 \u23427 \u35760 \u24405 \u30340 \u26159 nginx\u26381 \u21153 \u22120 \u25552 \u20379 \u26381 \u21153 \u36807 \u31243 \u20013 \u24212 \u31572 \u21069 \u31471 \u35831 \u27714 \u30340 \u26085 \u24535 \u65289 \
+\cf4 \expnd0\expndtw0\kerning0
+access_log /var/log/nginx/access.log combined;\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+log_format combined\'a0
+\f1 \expnd0\expndtw0\kerning0
+\'a0'$remote_addr - $remote_user [$time_local] "$request" '
+\f0 \cf2 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\f1 \cf4 \expnd0\expndtw0\kerning0
+\'a0\'a0\'a0 '$status $body_bytes_sent "$http_referer" '
+\f0 \cf2 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u36830 \u25509 \u36229 \u26102 \u26102 \u38388 \u65288 \u21333 \u20301 \u65306 \u31186 \u65292 \u21487 \u22312 http\u12289 server\u12289 location\u20013 \u37197 \u32622 \u65289 \
+\pard\pardeftab720
+\cf4 \expnd0\expndtw0\kerning0
+keepalive_timeout 120;\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+reset_timeout_connection on;\cf2 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u21333 \u36830 \u25509 \u35831 \u27714 \u25968 \u19978 \u38480 \'a0\u65288 \u38480 \u21046 \u29992 \u25143 \u36890 \u36807 \u26576 \u19968 \u36830 \u25509 \u39033 \u26381 \u21153 \u22120 \u21457 \u36865 \u35831 \u27714 \u30340 \u27425 \u25968 \u65292 \u21487 \u22312 http\u12289 server\u12289 location\u20013 \u37197 \u32622 \u65289 \
+\cf4 \expnd0\expndtw0\kerning0
+keepalive_requests 100;\cf2 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u26159 \u21542 \u20801 \u35768 sendfile\u26041 \u24335 \u20256 \u36755 \u25991 \u20214 \u65288 \u21487 \u22312 http\u12289 server\u12289 location\u20013 \u37197 \u32622 \u65289 \
+\cf4 \expnd0\expndtw0\kerning0
+sendfile on;\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+sendfile_max_chunk 128k \'a0\cf2 \expnd0\expndtw0\kerning0
+ \uc0\u65288 #\u22914 \u26524 \u35774 \u32622 \u20026 0\u65292 \u21017 \u26080 \u38480 \u21046 \u65289 \
+\
+#\
+\cf4 \expnd0\expndtw0\kerning0
+tcp_nopush on;\cf2 \expnd0\expndtw0\kerning0
+\
+\
+\
+\pard\pardeftab720
+
+\fs26 \cf5 \expnd0\expndtw0\kerning0
+#\uc0\u24320 \u21551 gzip\u21387 \u32553 
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\f2\fs26 \cf4 \expnd0\expndtw0\kerning0
+gzip\'a0 on;
+\f0 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\f2 \cf4 \expnd0\expndtw0\kerning0
+gzip_disable "MSIE [1-6]\\.(?!.*SV1)";
+\f0 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\f2 \cf4 \expnd0\expndtw0\kerning0
+gzip\'a0_min_length \'a01000;\cf5 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+gzip_buffers \'a0168k\cf5 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\fs28 \cf5 \expnd0\expndtw0\kerning0
+#
+\f3 \'c9\'e8\'d6\'c3\'b8\'ba\'d4\'d8\'be\'f9\'ba\'e2\'b7\'fe\'ce\'f1\'c6\'f7\'c1\'d0\'b1\'ed
+\f2\fs26 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+\cf4 \expnd0\expndtw0\kerning0
+upstream mysvr \{\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0server 192.168.1:80 weight=5;\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0server 192.168.1:80 weight=2;\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0server 192.168.1:80 weight=8;\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+\}\cf2 \expnd0\expndtw0\kerning0
+\
+\cf5 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\f0 \cf5 \expnd0\expndtw0\kerning0
+\'a0#shorten the timeout period, original one is 300
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\fs26 \cf5 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0 \'a0 fastcgi_connect_timeout 30;
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\fs26 \cf5 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0 \'a0 fastcgi_send_timeout 300;
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\fs26 \cf5 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0 \'a0 fastcgi_read_timeout 300;
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\fs26 \cf5 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0 \'a0 fastcgi_buffer_size 128k;
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\fs26 \cf5 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0 \'a0 fastcgi_buffers 8 128k;
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\fs26 \cf5 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0 \'a0 fastcgi_busy_buffers_size 256k;
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\fs26 \cf5 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0 \'a0 fastcgi_temp_file_write_size 256k;
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\fs26 \cf5 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0 \'a0 fastcgi_intercept_errors on;
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\fs26 \cf5 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0 \'a0 fastcgi_hide_header Pragma;
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\fs26 \cf5 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0 \'a0 # fastcgi cache
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\fs26 \cf5 \expnd0\expndtw0\kerning0
+\'a0 \'a0 \'a0 \'a0 fastcgi_cache_path temp/fastcgi_cache levels=1:2 keys_zone=cache_voice:128m inactive=30m max_size=4G;
+\fs28 \cf2 \expnd0\expndtw0\kerning0
+\
+\
+\pard\pardeftab720
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\uc0\u20116 . server\u22359 \u35814 \u35299 
+\fs28 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u30417 \u21548 \u31471 \u21475 \
+\pard\pardeftab720
+\cf4 \expnd0\expndtw0\kerning0
+listen 80;\cf2 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u26381 \u21153 \u22495 \u21517 \
+\cf4 \expnd0\expndtw0\kerning0
+server_name www.xxx.com;\cf2 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u34394 \u25311 \u20027 \u26426 \u30340 \u35775 \u38382 \u26085 \u24535 \
+\cf4 \expnd0\expndtw0\kerning0
+access_log /var/log/nginx/www.xxx.com_access.log main;\cf2 \expnd0\expndtw0\kerning0
+\
+\
+\pard\pardeftab720
+
+\f2 \cf5 \expnd0\expndtw0\kerning0
+#
+\f3 \'c8\'e7\'b9\'fb\'d6\'b8\'b6\'a8
+\f2 http
+\f3 \'b4\'ed\'ce\'f3\'d7\'b4\'cc\'ac\'c2\'eb\'a3\'ac\'d4\'f2\'b7\'b5\'bb\'d8\'bf\'cd\'bb\'a7\'b6\'cb\'d6\'b8\'b6\'a8\'b5\'c4
+\f2 url
+\f3 \'b5\'d8\'d6\'b7
+\f2 \
+\pard\pardeftab720
+
+\fs26 \cf4 \expnd0\expndtw0\kerning0
+error_page 500 502 503 504 /50x.html;\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+location = 50x.html \{\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+\'a0 \'a0 root /home/xiaoju/webroot;\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+\}\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\f0\fs32 \cf2 \expnd0\expndtw0\kerning0
+\uc0\u20845 . location\u22359 \u35814 \u35299 
+\fs28 \expnd0\expndtw0\kerning0
+\
+#\uc0\u23450 \u20041 \u32593 \u31449 \u26681 \u30446 \u24405 \
+\pard\pardeftab720
+\cf4 \expnd0\expndtw0\kerning0
+root /home/xiaoju/webroot;\cf2 \expnd0\expndtw0\kerning0
+\
+\
+#\uc0\u23450 \u20041 \u39318 \u39029 \u32034 \u24341 \u25991 \u20214 \u30340 \u21517 \u31216 \
+\cf4 \expnd0\expndtw0\kerning0
+index index.php index.html index.htm;\cf2 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\f2\fs26 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\'a0
+\f0\fs28 \cf2 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\f2\fs26 \cf4 \cb6 \expnd0\expndtw0\kerning0
+\'a0fastcgi_pass\'a0 www.xx.com;\
+\'a0fastcgi_param\'a0 SCRIPT_FILENAME\'a0 $document_root/$fastcgi_script_name;\'a0\
+\'a0include /etc/nginx/fastcgi_params;
+\f3 \cf7 include fastcgi.conf
+\f0\fs28 \cf2 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\f2\fs26 \cf5 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\fs28 \cf5 \expnd0\expndtw0\kerning0
+#
+\f3 \'d2\'fd\'c8\'eb\'c5\'e4\'d6\'c3\'ce\'c4\'bc\'fe
+\fs26 \expnd0\expndtw0\kerning0
+\'a3\'a8\'bf\'c9\'d2\'d4\'b7\'c5\'d4\'da\'c5\'e4\'d6\'c3\'ce\'c4\'bc\'fe\'b5\'c4\'c8\'ce\'d2\'e2\'ce\'bb\'d6\'c3\'a3\'a9
+\f2 \
+\pard\pardeftab720
+
+\fs28 \cf4 \expnd0\expndtw0\kerning0
+include /etc/nginx/conf.d/*.conf;\uc0\u8232 include /etc/nginx/sites-enabled/*;\cf2 \expnd0\expndtw0\kerning0
+\
+\cf4 \expnd0\expndtw0\kerning0
+\
+\
+\
+\pard\pardeftab720\qc
+
+\fs24 \cf3 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+{\field{\*\fldinst{HYPERLINK "javascript:"}}{\fldrslt \cf3 \expnd0\expndtw0\kerning0
+\'a0}}\
+}
