@@ -1016,3 +1016,29 @@ telnet: connect to address 127.0.0.1: Connection refused
 telnet: Unable to connect to remote host
 
 
+java bashrc 新mac系统 mac sierra 做的兼容
+thief-MBP:etc thief$ vi bashrc~previous 
+
+        printf '\e]7;%s\a' "$PWD_URL"
+    }
+    PROMPT_COMMAND="update_terminal_cwd; $PROMPT_COMMAND"
+fi
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home"
+export FPM_HOME="/usr/local/Cellar/php70/7.0.8/sbin"
+export WEB_DOCUMENT="/usr/local/var/www"
+export BASH_FILE="/private/etc"
+export PHP_HOME="/usr/local/Cellar/php70/7.0.8/bin"
+export NGINX_HOME="/usr/local/Cellar"
+export CLASS_PATH="$JAVA_HOME/lib"
+export XDEBUG_HOME="/usr/local/Cellar/php70-xdebug/2.4.0"
+export ANT_HOME="/Users/thief/Documents/apache-ant-1.9.7"
+export PATH="$PATH:$JAVA_HOME/bin:$ANT_HOME/bin"
+export MYSQL_HOME="/usr/local/mysql-5.6.26-osx10.8-x86_64/bin"
+export PATH="$PHP_HOME:$NGINX_HOME:$FPM_HOME:$PATH"
+export PATH="$PATH:$MYSQL_HOME"
+export PATH="$PATH:$WEB_DOCUMENT:$BASH_FILE"
+export PATH="$PATH:$XDEBUG_HOME"
+export TOMCAT_HOME="/Users/thief/Documents/apache-tomcat-8.0.36"
+export PATH="$TOMCAT_HOME/bin:$PATH"
+export MAVEN_HOME="/Users/thief/Documents/apache-maven-3.3.9"
+export PATH="$MAVEN_HOME/bin:$PATH"
