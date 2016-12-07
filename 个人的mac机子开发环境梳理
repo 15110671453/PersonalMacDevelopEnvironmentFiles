@@ -39,6 +39,7 @@ drwxr-xr-x  4 root  wheel    136  9 14 08:41 ..
 自己添加自己的java环境变量到系统变量bashrc中
 
 我安装的是1.8.91.14 但是有最新的1.8.111.14 如果mac安装了该最新的包 该包目录可能在哪里呢
+mac 的偏好设置中能看到 java 和 mysql 哦！！
 /Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java
 
 thief-MBP:~ thief$ cd /Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/
